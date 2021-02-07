@@ -1,12 +1,27 @@
 const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the link to your model provided by Teachable Machine export panel
         let model, webcam, ctx, labelContainer, maxPredictions;
         const canvas = document.getElementById("canvas");
+        const togglebutton = document.querySelector(".toggle");
         canvas.style.display="none";
+
+        // Convenience function to setup a webcam
+        const size = 500;
+        const flip = true; // whether to flip the webcam
+        webcam = new tmPose.Webcam(size, size, flip);
+        webcam.setup();
+
         let togglekey = false;
-        function toggle(){
-            return togglekey = !togglekey
+        async function toggle(){           
+            if(togglekey === true){
+                await init();
+                togglebutton.innerHTML = "Stop";
+            }else if(togglekey===false){
+                await closeinit();
+                togglebutton.innerHTML = "Start";
+            }
+            togglekey = !togglekey;
         }
-        if(togglekey === true){
+
         async function init() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
@@ -15,11 +30,11 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
             model = await tmPose.load(modelURL, metadataURL);
             maxPredictions = model.getTotalClasses();
     
-            // Convenience function to setup a webcam
+            
             const size = 500;
-            const flip = true; // whether to flip the webcam
-            webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
-            await webcam.setup(); // request access to the webcam
+            //const flip = true; // whether to flip the webcam
+            //webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+            // await webcam.setup(); // request access to the webcam
             await webcam.play();
             window.requestAnimationFrame(loop);
     
@@ -32,7 +47,6 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
                 labelContainer.appendChild(document.createElement("div"));
             }
         }
-    }
     
         async function loop(timestamp) {
             webcam.update(); // update the webcam frame
@@ -81,20 +95,19 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
             }
         }
 
-        if(togglekey === false){
         async function closeinit(){
-            const size = 500;
-            const flip = true; // whether to flip the webcam
-            webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
-            await webcam.setup(); // request access to the webcam
+            //const size = 500;
+            //const flip = true; // whether to flip the webcam
+            //webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+            //await webcam.setup(); // request access to the webcam
             await webcam.play();
+            model = null;
             //webcam.update(); // update the webcam frame
             canvas.style.display="block";
             canvas.width = size; canvas.height = size;
             ctx = canvas.getContext("2d");
             window.requestAnimationFrame(loop2);
         }
-    }
 
         async function loop2(timestamp) {
             webcam.update(); // update the webcam frame
