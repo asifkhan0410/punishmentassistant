@@ -2,6 +2,11 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
         let model, webcam, ctx, labelContainer, maxPredictions;
         const canvas = document.getElementById("canvas");
         canvas.style.display="none";
+        let togglekey = false;
+        function toggle(){
+            return togglekey = !togglekey
+        }
+        if(togglekey === true){
         async function init() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
@@ -27,6 +32,7 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
                 labelContainer.appendChild(document.createElement("div"));
             }
         }
+    }
     
         async function loop(timestamp) {
             webcam.update(); // update the webcam frame
@@ -74,3 +80,28 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
                 }
             }
         }
+
+        if(togglekey === false){
+        async function closeinit(){
+            const size = 500;
+            const flip = true; // whether to flip the webcam
+            webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+            await webcam.setup(); // request access to the webcam
+            await webcam.play();
+            //webcam.update(); // update the webcam frame
+            canvas.style.display="block";
+            canvas.width = size; canvas.height = size;
+            ctx = canvas.getContext("2d");
+            window.requestAnimationFrame(loop2);
+        }
+    }
+
+        async function loop2(timestamp) {
+            webcam.update(); // update the webcam frame
+            //await predict();
+            if(webcam.canvas){
+                ctx.drawImage(webcam.canvas,0,0);
+            }
+            window.requestAnimationFrame(loop2);
+        }
+
