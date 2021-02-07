@@ -2,19 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>Punisher 💪💪</title>
+  <link rel="stylesheet" href="main.css">
 </head>
-<body>
-    
-    <div>Teachable Machine Pose Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <div><canvas id="canvas"></canvas></div>
-    <div id="label-container"></div>
-    <audio class = "handsdown" src="sounds/kick.wav"></audio>
-    <audio class = "handshalfraised" src="sounds/openhat.wav"></audio>
-    <audio class = "handsup" src="sounds/ride.wav"></audio>
-    
-    
+<body>    
+    <div class="container">
+        <div class="left">
+            <h1>Punishment Assistant</h1>
+            <h5>A simple tool teachers would love to use!</h5>
+            <h6>What is does? It uses machine learning models to detect wether a student who is pushished to do a hands-up, is he doing it properly or just faking it.</h6>
+            <h6>The model starts a beep sound when the student puts the hands half way down or completely puts it down.</h6>
+            <button type="button" onclick="init()">Start</button>
+        </div>
+        <div class="righ">
+            <canvas id="canvas"></canvas>
+            <div id="label-container"></div>
+            <audio class = "handsdown" src="sounds/kick.wav"></audio>
+            <audio class = "handshalfraised" src="sounds/tom.wav"></audio>
+        </div>        
+    </div>    
+    <footer>Made with ❤️ by <a href="https://github.com/asifkhan0410">Asif Ali Khan</a> 🚀</footer>    
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script src="script.js"></script>    

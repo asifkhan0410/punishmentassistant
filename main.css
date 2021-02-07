@@ -1,0 +1,116 @@
+body{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width:100vw;
+    align-items: center;
+    justify-content: center;
+    background-image:  url("images/bgpicture.svg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+    display: flex;
+    max-width: 1000px;
+    background-color: #c7e1f3;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 20px;
+}
+.left{
+    padding-right: 30px;
+}
+h1{
+    font-size: 4rem;
+    font-family: cursive;
+    color: #323377;
+    margin-top: 1px;
+}
+h5{
+    font-size: larger;
+    font-weight: 400;
+    color: #505690;
+}
+h6{
+    font-size: 16px;
+    font-weight: lighter;
+    color:#5f679c;
+}
+button{
+    margin-top: 10px;
+    color: #faf8f9;
+    background-color: #323377;
+    padding: 10px 40px;
+    letter-spacing: 7px;
+    outline: none;
+    font-family: cursive;
+    font-weight: bold;
+    border: 2px solid #faf8f9;
+    border-radius: 20px;
+}
+#label-container{
+    display: flex;
+    font-style: italic;
+    justify-content: space-around;
+    padding-top: 10px;
+    font-size: medium;
+    font-weight: 700;
+}
+#canvas{
+    border-radius: 15px;
+    height: 500px;
+    width:500px;
+}
+footer{
+    margin-top: 5%;
+}
+footer> a {
+    text-decoration: none;
+    color: #faf8f9;
+    background-color: #323377;
+    padding: 1px 10px;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 376px){
+    body{
+        background-position: right;
+    }
+    .container{
+        flex-direction: column;
+        max-width: 300px;
+        margin:0px;
+        padding:7px 16px;
+    }
+    .left{
+        padding-right: 0px;
+    }
+    h1{
+        font-size: 1.596rem;
+    }
+    h5{
+        font-size: 0.9rem;
+        margin:10px 0px;
+    }
+    h6{
+        font-size: 11px;
+        margin: 16px 0px;
+    }
+    button{
+       margin-top: 0px;
+       margin-bottom: 20px;
+       padding: 5px 15px;
+       letter-spacing: 5px;
+    }
+    #canvas{
+        width: 300px;
+        height:300px;
+    }
+    footer{
+        font-size: 10px;
+    }
+    #label-container{
+        font-size: x-small;
+    }
+}
