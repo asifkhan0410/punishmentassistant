@@ -11,15 +11,15 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
         webcam.setup();
 
         let togglekey = false;
-        async function toggle(){           
+        async function toggle(){ 
+            togglekey = !togglekey;          
             if(togglekey === true){
                 await init();
                 togglebutton.innerHTML = "Stop";
             }else if(togglekey===false){
                 await closeinit();
                 togglebutton.innerHTML = "Start";
-            }
-            togglekey = !togglekey;
+            }            
         }
 
         async function init() {
@@ -30,11 +30,6 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
             model = await tmPose.load(modelURL, metadataURL);
             maxPredictions = model.getTotalClasses();
     
-            
-            const size = 500;
-            //const flip = true; // whether to flip the webcam
-            //webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
-            // await webcam.setup(); // request access to the webcam
             await webcam.play();
             window.requestAnimationFrame(loop);
     
@@ -96,13 +91,8 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
         }
 
         async function closeinit(){
-            //const size = 500;
-            //const flip = true; // whether to flip the webcam
-            //webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
-            //await webcam.setup(); // request access to the webcam
             await webcam.play();
             model = null;
-            //webcam.update(); // update the webcam frame
             canvas.style.display="block";
             canvas.width = size; canvas.height = size;
             ctx = canvas.getContext("2d");
@@ -111,7 +101,6 @@ const URL = "https://teachablemachine.withgoogle.com/models/Vp6W5spnX/"; // the 
 
         async function loop2(timestamp) {
             webcam.update(); // update the webcam frame
-            //await predict();
             if(webcam.canvas){
                 ctx.drawImage(webcam.canvas,0,0);
             }
