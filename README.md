@@ -15,6 +15,10 @@ When a student raises his hands the Model analyses the pose & there is no sound 
 
 If the student puts his/her hands down by 70% the model detech and gives a alarm for the same.
 
+</br>
+
+Read my blog on [**Hashnode**](https://asifkhan.hashnode.dev/punishment-assistant-for-teachers-using-html5-css-vanilla-js-and-teachable-machine-learning)
+
 ![Teacher Punishment Tool](https://cdn.hashnode.com/res/hashnode/image/upload/v1612728542232/5-S8860dy.png?auto=compress)
 
 ## 👨🏻‍💻Technologies Used
